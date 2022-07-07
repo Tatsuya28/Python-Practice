@@ -9,4 +9,4 @@ In this folder, there are different programs solving different problems presente
 | DynamicProgramingVideos | [String construction](DynamicProgrammingVideo/ConstructString) |
 | DynamicProgramingVideos | [Grid traveling](DynamicProgrammingVideo/GridTraveling)        |
 | DynamicProgramingVideos | [Sum construction](DynamicProgrammingVideo/TargetSum)          |
-| Current                 | [Sudoku solver](SudokuSolver)                                  |
+| SudokuSolver            | [Sudoku solver](SudokuSolver)                                  |
