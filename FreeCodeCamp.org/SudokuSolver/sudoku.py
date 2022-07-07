@@ -82,7 +82,7 @@ def print_sudoku(puzzle):
     """Prints the sudoku board"""
     print("+" + "---+" * 9)
     for i, row in enumerate(puzzle):
-        print(("|" + " {}   {}   {} |" * 3).format(*[x if x != 0 else " " for x in row]))
+        print(("|" + " {}   {}   {} |" * 3).format(*[x if x != -1 else " " for x in row]))
         if i % 3 == 2:
             print("+" + "---+" * 9)
         else:
@@ -103,5 +103,15 @@ if __name__ == '__main__':
         [6, 7, -1, 1, -1, 5, -1, 4, -1],
         [1, -1, 9, -1, -1, -1, 2, -1, -1]
     ]
-    print(solve_sudoku(example_board))
+
+    print("The empty grid to solve:")
     print_sudoku(example_board)
+    is_solvable = solve_sudoku(example_board)
+    print(f"\nThe sudoku is solvable? -> {is_solvable}")
+    if is_solvable:
+        input("Press ENTER to see the SOLVED sudoku...")
+        print("\nHere, the solved sudoku:")
+        print_sudoku(example_board)
+    else:
+        print("Sorry, it's impossible. Check your input. If it isn't your input,\
+                there is a mistake in the sudoku you want to solve")
