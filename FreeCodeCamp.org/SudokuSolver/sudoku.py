@@ -78,6 +78,17 @@ def solve_sudoku(puzzle):
     return False
 
 
+def print_sudoku(puzzle):
+    """Prints the sudoku board"""
+    print("+" + "---+" * 9)
+    for i, row in enumerate(puzzle):
+        print(("|" + " {}   {}   {} |" * 3).format(*[x if x != 0 else " " for x in row]))
+        if i % 3 == 2:
+            print("+" + "---+" * 9)
+        else:
+            print("+" + "   +" * 9)
+
+
 if __name__ == '__main__':
     example_board = [
         [3, 9, -1, -1, 5, -1, -1, -1, -1],
@@ -93,4 +104,4 @@ if __name__ == '__main__':
         [1, -1, 9, -1, -1, -1, 2, -1, -1]
     ]
     print(solve_sudoku(example_board))
-    pprint(example_board)
+    print_sudoku(example_board)
