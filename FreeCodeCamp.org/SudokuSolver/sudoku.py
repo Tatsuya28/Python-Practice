@@ -1,17 +1,14 @@
-from pprint import pprint
-
-
 def find_next_empty(puzzle):
-    # finds the next row, col on the puzzle that's not filled yet --> rep with -1
+    # finds the next row, col on the puzzle that's not filled yet --> rep with 0
     # return row, col tuple (or (None, None) if there is none)
 
     # keep in mind that we are using 0-8 for our indices
     for r in range(9):
         for c in range(9):
-            if puzzle[r][c] == -1:
+            if puzzle[r][c] == 0:
                 return r, c
 
-    return None, None  # if no spaces in the puzzle are empty (-1)
+    return None, None  # if no spaces in the puzzle are empty (0)
 
 
 def is_valid(puzzle, guess, row, col):
@@ -72,7 +69,7 @@ def solve_sudoku(puzzle):
 
             # step 5: if not valid OR if our guess does not solve the puzzle,
             # then we need to backtrack and try a new number
-            puzzle[row][col] = -1  # reset the guess
+            puzzle[row][col] = 0  # reset the guess
 
     # step 6: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!!
     return False
@@ -82,7 +79,7 @@ def print_sudoku(puzzle):
     """Prints the sudoku board"""
     print("+" + "---+" * 9)
     for i, row in enumerate(puzzle):
-        print(("|" + " {}   {}   {} |" * 3).format(*[x if x != -1 else " " for x in row]))
+        print(("|" + " {}   {}   {} |" * 3).format(*[x if x != 0 else " " for x in row]))
         if i % 3 == 2:
             print("+" + "---+" * 9)
         else:
@@ -91,22 +88,39 @@ def print_sudoku(puzzle):
 
 if __name__ == '__main__':
     example_board = [
-        [3, 9, -1, -1, 5, -1, -1, -1, -1],
-        [-1, -1, -1, 2, -1, -1, -1, -1, 5],
-        [-1, -1, -1, 7, 1, 9, -1, 8, -1],
+        [3, 9, 0, 0, 5, 0, 0, 0, 0],
+        [0, 0, 0, 2, 0, 0, 0, 0, 5],
+        [0, 0, 0, 7, 1, 9, 0, 8, 0],
 
-        [-1, 5, -1, -1, 6, 8, -1, -1, -1],
-        [2, -1, 6, -1, -1, 3, -1, -1, -1],
-        [-1, -1, -1, -1, -1, -1, -1, -1, 4],
+        [0, 5, 0, 0, 6, 8, 0, 0, 0],
+        [2, 0, 6, 0, 0, 3, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 4],
 
-        [5, -1, -1, -1, -1, -1, -1, -1, -1],
-        [6, 7, -1, 1, -1, 5, -1, 4, -1],
-        [1, -1, 9, -1, -1, -1, 2, -1, -1]
+        [5, 0, 0, 0, 0, 0, 0, 0, 0],
+        [6, 7, 0, 1, 0, 5, 0, 4, 0],
+        [1, 0, 9, 0, 0, 0, 2, 0, 0]
+    ]
+
+    # almost impossible brute force sudoku
+    example_board2 = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 3, 0, 8, 5],
+        [0, 0, 1, 0, 2, 0, 0, 0, 0],
+
+        [0, 0, 0, 5, 0, 7, 0, 0, 0],
+        [0, 0, 4, 0, 0, 0, 1, 0, 0],
+        [0, 9, 0, 0, 0, 0, 0, 0, 0],
+
+        [5, 0, 0, 0, 0, 0, 0, 7, 3],
+        [0, 0, 2, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 4, 0, 0, 0, 9]
     ]
 
     print("The empty grid to solve:")
     print_sudoku(example_board)
+    print("\nCalculating...", end=" ")
     is_solvable = solve_sudoku(example_board)
+    print("Done.")
     print(f"\nThe sudoku is solvable? -> {is_solvable}")
     if is_solvable:
         input("Press ENTER to see the SOLVED sudoku...")
