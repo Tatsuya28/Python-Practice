@@ -22,7 +22,7 @@ def solve():
 
 
 if __name__ == '__main__':
-    grid = np.array([list(map(int, input())) for i in range(9)])
+    grid = np.array([list(map(int, input())) for _ in range(9)])
     solve()
     for i in grid:
         print(''.join(map(str, i)))

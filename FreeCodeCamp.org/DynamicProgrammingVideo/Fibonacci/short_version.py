@@ -1,6 +1,7 @@
 # Memoization
-
-def Fibonacci(n, memo={}):
+def Fibonacci(n, memo=None):
+    if memo is None:
+        memo = {}
     if n in memo:
         return memo[n]
 

@@ -108,24 +108,24 @@ class Cell:
         self.gx = self.gy = self.gs = None
 
     def solution(self):
-        return str(self.must) if self.must != None else "-"
+        return str(self.must) if self.must is not None else "-"
 
     def __repr__(self):
         return repr(self.key).replace(" ", "") + ":" + str(self).rstrip()
 
     def __str__(self):
-        if self.must == None:
+        if self.must is None:
             return clean(self.poss)
         else:
             return clean(self.must)
 
     def solve(self, debug=False):
-        if debug == None:
+        if debug is None:
             t_debug = c_debug
         else:
             t_debug = c_debug or debug
 
-        if self.must != None: return False
+        if self.must is not None: return False
         if len(self.poss) == 1:
             self.must = list(self.poss)[0]
             if t_debug: print("Cell solve:", self.key, self.must, file=sys.stderr)
@@ -135,9 +135,9 @@ class Cell:
         return False
 
     def set(self, v):
-        if self.must == None:
+        if self.must is None:
             assert v in self.poss, (self, v, self.poss, self.must)
-            self.poss = set([v])
+            self.poss = {v}
             self.must = v
             return True
         else:
@@ -201,7 +201,7 @@ class Game:
         xqueue = sorted([c for c in self.dcell.values() if c.bruteforce_hypo == None], key=lambda c: (c.y, c.x))
         if self.solve_bruteforce_queue(xqueue):
             for c in self.dcell.values():
-                if c.must == None:
+                if c.must is None:
                     c.set(c.bruteforce_hypo)
 
     def solve_bruteforce_queue(self, xqueue):
@@ -216,7 +216,6 @@ class Game:
             if self.solve_bruteforce_queue(xqueue1): return True
         cell.bruteforce_hypo = None
         return False
-
 
 
 grid = "\n".join([input() for _ in range(9)])
