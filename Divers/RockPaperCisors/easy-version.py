@@ -2,10 +2,7 @@ import random
 
 
 def is_won(user, computer):
-    if (user == 'r' and computer == 'p') or (user == 'p' and computer == 'c') or (user == 'c' and computer == 'r'):
-        return True
-
-    return False
+    return (user == 'r' and computer == 'p') or (user == 'p' and computer == 'c') or (user == 'c' and computer == 'r')
 
 
 def play():

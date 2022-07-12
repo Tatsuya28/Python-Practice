@@ -11,24 +11,18 @@ Au programme, vous devrez créer :
 
 Le programme demande à l’utilisateur d’effectuer le premier coup avant d’effectuer un coup. Une fois le coup validé, l’entrée est évaluée, l’entrée saisie pouvant être une chaîne de caractères, une lettre ou un nombre. Après évaluation de la chaîne de caractères, la fonction de résultat détermine le gagnant et la fonction de comptabilisation des points actualise le score total. """
 
-from random import choice
-import sys
 import os
+import sys
+from random import choice
 
 CLEAR = "cls" if sys.platform == "win32" else "clear"
 
-ROCK        = 0b001
-PAPER       = 0b010
-SCISSORS    = 0b100
+ROCK = 0b001
+PAPER = 0b010
+SCISSORS = 0b100
 
-winner = {
-    ROCK        | PAPER: PAPER,
-    PAPER       | SCISSORS: SCISSORS,
-    SCISSORS    | ROCK: ROCK,
-    ROCK        | ROCK: None,
-    PAPER       | PAPER: None,
-    SCISSORS    | SCISSORS: None
-}
+winner = {ROCK | PAPER: PAPER, PAPER | SCISSORS: SCISSORS, SCISSORS | ROCK: ROCK, ROCK: None, PAPER: None,
+          SCISSORS: None}
 
 score = {"player": 0, "ai": 0}
 
@@ -58,7 +52,7 @@ for turn in range(turns):
     print("What do you want to play?\n1. Rock\n2. Paper\n3. Scissors\n")
 
     player_move = None
-    while not player_move or not player_move in [1, 2, 3]:
+    while not player_move or player_move not in [1, 2, 3]:
         player_move = int_input("You >", lambda x: x in (1, 2, 3))
     player_move = [ROCK, PAPER, SCISSORS][player_move - 1]
     ai_move = random_move()

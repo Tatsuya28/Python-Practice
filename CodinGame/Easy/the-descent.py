@@ -8,10 +8,10 @@
 while True:
     max_height = 0
     id_mountain = -1
-    for id in range(8):
+    for mountain_index in range(8):
         mountain_h = int(input())  # represents the height of one mountain.
         if mountain_h > max_height:
-            max_height, id_mountain = mountain_h, id
+            max_height, id_mountain = mountain_h, mountain_index
 
     # The index of the mountain to fire on.
     print(id_mountain)

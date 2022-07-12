@@ -4,6 +4,7 @@ Ce premier projet est un jeu amusant pour les débutants connu de tous. Le progr
 
 Au programme, vous apprendrez à saisir des entrées clavier par un utilisateur, créer des fonctions pour valider que le nombre entré est bien un nombre entier, comparer une variable de référence (le prix) avec une autre variable et de calculer la différence entre deux nombre. """
 
+
 from random import randint
 
 
@@ -14,15 +15,15 @@ nb_try = 0
 
 print("\n\nWe will play to Guess the Price.\nFor that, a random number between 0 and 1000 has been drawn. Try to guess it!")
 
-while (found == False):
+while not found:
     number = input("Your assumption: ")
-    while (number.isdigit() == False):
+    while not number.isdigit():
         number = input("Please enter a number! Your assumption: ")
     number = int(number)
     nb_try += 1
 
     if number == guess:
-        print("Congratulations you found it in " + str(nb_try) + " try!")
+        print(f"Congratulations you found it in {nb_try} try!")
         found = True
     elif number < guess:
         print("It's more!")

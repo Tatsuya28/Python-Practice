@@ -19,7 +19,7 @@ def hangman():
     used_letters = set()
     lives = 10
 
-    while len(word_letters) > 0 and lives > 0:
+    while word_letters and lives > 0:
         # letters used
         print(f"You have {lives} lives left. You have used these letters: ", " ".join(used_letters))
 

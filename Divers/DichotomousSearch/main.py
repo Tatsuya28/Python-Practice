@@ -1,5 +1,6 @@
 """ Le juste prix avec la recherche dichotomique """
 
+
 from random import randint
 
 #
@@ -13,15 +14,15 @@ guess = randint(inf_bound, sup_bound)
 
 print(f"\n\nWe will play to Guess the Price.\nFor that, a random number between {inf_bound} and {sup_bound} has been drawn. Try to guess it!")
 
-while (found == False):
+while not found:
     nb_try += 1
-    
+
     number = inf_bound + (sup_bound - inf_bound) // 2
 
     print(f"Assumption : {number}")
 
     if number == guess:
-        print("Congratulations you found it in " + str(nb_try) + " try! \n")
+        print(f"Congratulations you found it in {nb_try}" + " try! \n")
         found = True
     elif number < guess:
         print("It's more!\n")

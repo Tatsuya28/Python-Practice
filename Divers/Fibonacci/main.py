@@ -11,19 +11,17 @@ import sys
 
 CLEAR = "cls" if sys.platform == "win32" else "clear"
 
+
 def fibonacci(laps, id, a, b):
     if id == laps:
         print(a)
         return
     else:
         print(a, end=' ')
-        return fibonacci(laps, id+1, b, a+b)
+        return fibonacci(laps, id + 1, b, a + b)
+
 
 os.system(CLEAR)
 n = int(input("Please select the n-th number of the fibonacci sequence : "))
 print("Here, the values until the {0}-th fibonacci term : ".format(n))
 fibonacci(n, 1, 1, 1)
-
-
-
-
