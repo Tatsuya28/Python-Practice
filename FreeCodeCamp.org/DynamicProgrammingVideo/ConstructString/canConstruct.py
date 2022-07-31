@@ -88,7 +88,10 @@ def countConstruct(target, wordBank, memo=None):
 # Memoized
 # O( n * m * m) time complexity
 # O( m * m ) space complexity
-def allConstruct(target, wordBank):
+def allConstruct(target, wordBank, memo=None):
+    if memo is None:
+        memo = {}
+
     if target == '':
         return [[]]
 
@@ -102,47 +105,47 @@ def allConstruct(target, wordBank):
 
     return result
 
-# TODO corriger targetWays
+# TODO correct all construct with memoization
 
-# print(f"\n------------------------- Test function: canConstruct -------------------------")
-# print(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"]))                       # true
-# print(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))        # false
-# print(canConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]))        # false
-# print(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
-#     "e",
-#     "ee",
-#     "eee",
-#     "eeee",
-#     "eeeee",
-#     "eeeeee",
-#     "eeeeeee"]))        # false
-#
-#
-# print(f"\n------------------------- Test function: countConstruct -------------------------")
-# print(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"]))                       # 2
-# print(countConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"]))                       # 1
-# print(countConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))        # 0
-# print(countConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]))        # 4
-# print(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
-#     "e",
-#     "ee",
-#     "eee",
-#     "eeee",
-#     "eeeee",
-#     "eeeeee",
-#     "eeeeeee"]))        # 0
-#
-#
-# print(f"\n------------------------- Test function: allConstruct -------------------------")
+print(f"\n------------------------- Test function: canConstruct -------------------------")
+print(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"]))                       # true
+print(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))        # false
+print(canConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]))        # false
+print(canConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
+    "e",
+    "ee",
+    "eee",
+    "eeee",
+    "eeeee",
+    "eeeeee",
+    "eeeeeee"]))        # false
+
+
+print(f"\n------------------------- Test function: countConstruct -------------------------")
+print(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"]))                       # 2
+print(countConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"]))                       # 1
+print(countConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))        # 0
+print(countConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]))        # 4
+print(countConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
+    "e",
+    "ee",
+    "eee",
+    "eeee",
+    "eeeee",
+    "eeeeee",
+    "eeeeeee"]))        # 0
+
+
+print(f"\n------------------------- Test function: allConstruct -------------------------")
 print(allConstruct("purple", ["purp", "p", "ur", "le", "purpl"]))                   # [['purp', 'le'], ['p', 'ur', 'p', 'le']]
 print(allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"]))                   # [['abc', 'def']]
 print(allConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))    # []
 print(allConstruct("enterapotentpot", ["a", "p", "ent", "enter", "ot", "o", "t"]))  # [['enter', 'a', 'p', 'ot', 'ent', 'p', 'ot'], ['enter', 'a', 'p', 'ot', 'ent', 'p', 'o', 't'], ['enter', 'a', 'p', 'o', 't', 'ent', 'p', 'ot'], ['enter', 'a', 'p', 'o', 't', 'ent', 'p', 'o', 't']]
-# print(allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
-#     "e",
-#     "ee",
-#     "eee",
-#     "eeee",
-#     "eeeee",
-#     "eeeeee",
-#     "eeeeeee"]))
+print(allConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef", [
+    "e",
+    "ee",
+    "eee",
+    "eeee",
+    "eeeee",
+    "eeeeee",
+    "eeeeeee"]))
